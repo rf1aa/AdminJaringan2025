@@ -28,7 +28,7 @@ NRP: 3123500004 <br>
 ## Jawaban
 ### 1. Analisa http.cap dengan Wireshark
 ![htttp.cap yang perlu dianalisis](images/http-cap.png) 
- - Versi HTTP yang digunakan: HTTP/1.1
+ - Versi HTTP yang digunakan: HTTP/1.1  <br>
   ![Versi HTTP](images/http-ver.png)
 
 - IP Address dari Client yaitu 145.254.160.237  
@@ -60,15 +60,15 @@ Ini adalah bagaiman TCP membangun koneksi di antara  client dan server, langkah-
    c. **ACK** → Klien mengonfirmasi koneksi dan siap berkomunikasi.
 
    Di bawah ini adalah contoh bagaimana three-way handshake berjalan
-   ![3-Way Hanshake](images/3-way.png) <br>
+   ![3-Way Hanshake](images/3-way.png)   <br>
 Terlihat bahwa klien dengan IP Address 192.168.1.24 meminta koneksi dengan 18.67.175.116 yang merupakan IP Address server. Server mengembalikan respon dengan SYN, ACK dan klien membalas lagi dengan ACK
 
 
 #### 2) **Data Transfer** (Pengiriman Data)
 Data mulai dikirimkan dengan protokol TCP,  yang berarti data harus sampai sama persis dengan bagaimana data berada di pengirimnya. Data juga tidak bisa langsung  dikirim secara utuh,sehingga data akan disegmentasi dan diberi sequence number agar ketika sampai di klien, data akan diurutkan sekalipun tidak datang berurutan sehingga data akan tetap utuh.
-![Port 1](images/port-1.png)<br>
-![Port 2](images/port-2.png)<br>
-![Port 3](images/port-3.png)<br>
+![Port 1](images/port-1.png)  <br>
+![Port 2](images/port-2.png)  <br>
+![Port 3](images/port-3.png)  <br>
 Seperti terlihat pada 3 gambar di atas, tiap segmen punya sequence number dan sudah punya next sequence number sehingga urutannya dapat dipastikan ketika sudah diterima
 
 
@@ -83,7 +83,7 @@ Ini adalah cara untuk mengakhiri koneksi yang biasanya menggunakan **four-way ha
 
 Dalam penerapannya, **FIN dan ACK bisa dikirim secara bersamaan** atau disebut **FIN + ACK**. Jadi, ketika klien meminta menutup koneksi, server langsung mengakui dan meminta penutupan koneksi dari klien.
 
-![Connection Termination](images/4-way.png)<br>
+![Connection Termination](images/4-way.png)  <br>
 
 Ini adalah contoh **connection termination**. Saya menutup tab dari browser secara paksa sehingga muncul permintaan **(RST, ACK)** dari klien. Namun, mungkin karena masih ada data yang belum terkirim, server mengirim kembali data tersebut dengan **IP yang berbeda** namun masih dalam satu jaringan, yaitu **Amazon**. Ini bisa terjadi karena server belum tahu klien sudah memutus koneksi. Akhirnya, klienlah yang mengirimkan **FIN, ACK** sebagai bagian dari **four-way handshake** agar koneksi bisa diputuskan dengan benar. Properti ini hanya bagian dari **four-way handshake yang dioptimasi** untuk mempercepat proses.
 
