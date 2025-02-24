@@ -34,7 +34,7 @@ NRP: 3123500004 <br>
 - IP Address dari Client yaitu 145.254.160.237  
   ![IP Client](images/Client-IPAdd.png)
 - IP Address dari Server yaitu 65.208.228.223  
-  ![IP Server](images/Server-IPAdd.png)
+  ![IP Server](images/Server-IPAdd.png)<br>
   Untuk IP Address 216.239.59.99 merupakan server dari skrip iklan yang menyajikan iklan di halaman web yang dikunjungi client
 
 **Waktu komunikasi:**
@@ -46,7 +46,7 @@ NRP: 3123500004 <br>
   4.846969 - 0.91131 = **3.935659 detik**
 
 ### 2. Deskripsi Gambar
-![Struktur Paket](images/slide-picture.jpg)
+![Struktur Paket](images/slide-picture.jpg)<br>
 Ini menunjukkan bagaimana data dikirimkan. 
 - Data link layer memiliki MAC Address agar paket bisa berpindah di dalam jaringan lokal. Jika harus keluar dari jaringan lokal, maka Network layer yang akan membantu paket. 
 - Di dalam network layer, ada Source IP Address dan Destination IP Address, dimana ini akan diisi alamat dari client dan server. Ketika paket keluar dari satu jaringan, MAC        Address akan diganti sesuai jaringan yang ada. Ini akan terus berubah sampai paket sampai ke tujuan. Ketika sampai di tujuan, Transport layer yang akan berperan mengarahkan      paket ke aplikasi yang memerlukan paket ini.
@@ -54,21 +54,21 @@ Ini menunjukkan bagaimana data dikirimkan.
 
 ### 3. Rangkuman Tahapan Komunikasi TCP
 #### 1) **Three-Way Handshake** (Membangun Koneksi)
-![Three-Way Handshake](images/3-way.png)
+Ini adalah bagaiman TCP membangun koneksi di antara  client dan server, langkah-langkahnya:
    a. **SYN** → Klien meminta koneksi ke server.
    b. **SYN-ACK** → Server merespons dengan acknowledge.
    c. **ACK** → Klien mengonfirmasi koneksi dan siap berkomunikasi.
 
    Di bawah ini adalah contoh bagaimana three-way handshake berjalan
-   ![3-Way Hanshake](images/3-way.png) 
+   ![3-Way Hanshake](images/3-way.png) <br>
 Terlihat bahwa klien dengan IP Address 192.168.1.24 meminta koneksi dengan 18.67.175.116 yang merupakan IP Address server. Server mengembalikan respon dengan SYN, ACK dan klien membalas lagi dengan ACK
 
 
 #### 2) **Data Transfer** (Pengiriman Data)
 Data mulai dikirimkan dengan protokol TCP,  yang berarti data harus sampai sama persis dengan bagaimana data berada di pengirimnya. Data juga tidak bisa langsung  dikirim secara utuh,sehingga data akan disegmentasi dan diberi sequence number agar ketika sampai di klien, data akan diurutkan sekalipun tidak datang berurutan sehingga data akan tetap utuh.
-![Port 1](images/port-1.png)
-![Port 2](images/port-2.png)
-![Port 3](images/port-3.png)
+![Port 1](images/port-1.png)<br>
+![Port 2](images/port-2.png)<br>
+![Port 3](images/port-3.png)<br>
 Seperti terlihat pada 3 gambar di atas, tiap segmen punya sequence number dan sudah punya next sequence number sehingga urutannya dapat dipastikan ketika sudah diterima
 
 
@@ -83,12 +83,7 @@ Ini adalah cara untuk mengakhiri koneksi yang biasanya menggunakan **four-way ha
 
 Dalam penerapannya, **FIN dan ACK bisa dikirim secara bersamaan** atau disebut **FIN + ACK**. Jadi, ketika klien meminta menutup koneksi, server langsung mengakui dan meminta penutupan koneksi dari klien.
 
-![Connection Termination](images/4-way.png)
+![Connection Termination](images/4-way.png)<br>
 
 Ini adalah contoh **connection termination**. Saya menutup tab dari browser secara paksa sehingga muncul permintaan **(RST, ACK)** dari klien. Namun, mungkin karena masih ada data yang belum terkirim, server mengirim kembali data tersebut dengan **IP yang berbeda** namun masih dalam satu jaringan, yaitu **Amazon**. Ini bisa terjadi karena server belum tahu klien sudah memutus koneksi. Akhirnya, klienlah yang mengirimkan **FIN, ACK** sebagai bagian dari **four-way handshake** agar koneksi bisa diputuskan dengan benar. Properti ini hanya bagian dari **four-way handshake yang dioptimasi** untuk mempercepat proses.
-
-
-
-**Hak Cipta © 2024 Muhammad. Semua hak dilindungi.**
-
 
