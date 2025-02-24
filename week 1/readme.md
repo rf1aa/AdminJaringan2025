@@ -6,9 +6,9 @@
 Dr. Ferry Astika Saputra, S.T., M.Sc.
 
 **Oleh:**  
-Muhammad Rafi Dhiyaulhaq
-NRP: 3123500004 
-4 D3 Teknik Informatika A
+Muhammad Rafi Dhiyaulhaq<br>
+NRP: 3123500004 <br>
+4 D3 Teknik Informatika A<br>
 
 **PROGRAM STUDI D3 TEKNIK INFORMATIKA**  
 **POLITEKNIK ELEKTRONIKA NEGERI SURABAYA**  
@@ -27,7 +27,7 @@ NRP: 3123500004
 
 ## Jawaban
 ### 1. Analisa http.cap dengan Wireshark
-![htttp.cap yang perlu dianalisis](images/http-cap.png)
+![htttp.cap yang perlu dianalisis](images/http-cap.png) <br>
 **Versi HTTP yang digunakan:** HTTP/1.1
 
 ![Versi HTTP](images/http-ver.png)
