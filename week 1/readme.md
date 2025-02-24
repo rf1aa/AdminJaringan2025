@@ -1,5 +1,6 @@
 # Laporan Umum
 ## Workshop Administrasi Jaringan
+![Logo PENS](images/pens.png)
 
 **Dosen Pengampu:**  
 Dr. Ferry Astika Saputra, S.T., M.Sc.
