@@ -27,7 +27,7 @@ NRP: 3123500004 <br>
 
 ## Jawaban
 ### 1. Analisa http.cap dengan Wireshark
-![htttp.cap yang perlu dianalisis](images/http-cap.png) <br>
+![htttp.cap yang perlu dianalisis](images/http-cap.png) 
  - Versi HTTP yang digunakan: HTTP/1.1
   ![Versi HTTP](images/http-ver.png)
 
@@ -46,7 +46,7 @@ NRP: 3123500004 <br>
   4.846969 - 0.91131 = **3.935659 detik**
 
 ### 2. Deskripsi Gambar
-![Struktur Paket](images/slide-picture.jpg)<br>
+![Struktur Paket](images/slide-picture.jpg)  <br>
 Ini menunjukkan bagaimana data dikirimkan. 
 - Data link layer memiliki MAC Address agar paket bisa berpindah di dalam jaringan lokal. Jika harus keluar dari jaringan lokal, maka Network layer yang akan membantu paket. 
 - Di dalam network layer, ada Source IP Address dan Destination IP Address, dimana ini akan diisi alamat dari client dan server. Ketika paket keluar dari satu jaringan, MAC        Address akan diganti sesuai jaringan yang ada. Ini akan terus berubah sampai paket sampai ke tujuan. Ketika sampai di tujuan, Transport layer yang akan berperan mengarahkan      paket ke aplikasi yang memerlukan paket ini.
