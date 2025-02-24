@@ -28,9 +28,8 @@ NRP: 3123500004 <br>
 ## Jawaban
 ### 1. Analisa http.cap dengan Wireshark
 ![htttp.cap yang perlu dianalisis](images/http-cap.png) <br>
-**Versi HTTP yang digunakan:** HTTP/1.1
-
-![Versi HTTP](images/http-ver.png)
+ - Versi HTTP yang digunakan: HTTP/1.1
+  ![Versi HTTP](images/http-ver.png)
 
 - IP Address dari Client yaitu 145.254.160.237  
   ![IP Client](images/Client-IPAdd.png)
