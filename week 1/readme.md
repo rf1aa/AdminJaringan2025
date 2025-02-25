@@ -65,7 +65,7 @@ Terlihat bahwa klien dengan IP Address 192.168.1.24 meminta koneksi dengan 18.67
 
 
 #### 2) **Data Transfer** (Pengiriman Data)
-Data mulai dikirimkan dengan protokol TCP,  yang berarti data harus sampai sama persis dengan bagaimana data berada di pengirimnya. Data juga tidak bisa langsung  dikirim secara utuh,sehingga data akan disegmentasi dan diberi sequence number agar ketika sampai di klien, data akan diurutkan sekalipun tidak datang berurutan sehingga data akan tetap utuh.
+Data mulai dikirimkan dengan protokol TCP,  yang berarti data harus sampai sama persis dengan bagaimana data berada di pengirimnya. Data juga tidak bisa langsung  dikirim secara utuh,sehingga data akan disegmentasi dan diberi sequence number agar ketika sampai di klien, data akan diurutkan sekalipun tidak datang berurutan sehingga data akan tetap utuh.  <br>
 ![Port 1](images/port-1.png)  <br>
 ![Port 2](images/port-2.png)  <br>
 ![Port 3](images/port-3.png)  <br>
