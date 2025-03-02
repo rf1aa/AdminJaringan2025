@@ -3,7 +3,7 @@
 - [Chapter 2: Proses dan Thread](#chapter-2-proses-dan-thread)
 - [Chapter 3: Manajemen Memori](#chapter-3-manajemen-memori)
 
-#Chapter 4: Process Control
+# Chapter 4: Process Control
 
 # Komponen Proses
 
