@@ -78,6 +78,8 @@ Sinyal adalah metode utama untuk mengontrol dan mengelola proses dalam sistem op
 
 gambarsignal
 
-bash
+'''sh
+
 kill [-signal] pid
 
+'''
