@@ -1,4 +1,4 @@
-# Daftar Isi
+ ufadi# Daftar Isi
 - [Chapter 4: Prosess Control](#chapter-4-process_control)
 - [Chapter 2: Proses dan Thread](#chapter-2-proses-dan-thread)
 - [Chapter 3: Manajemen Memori](#chapter-3-manajemen-memori)
@@ -75,4 +75,9 @@ Terdapat sekitar **30 jenis sinyal**, yang digunakan dalam berbagai cara:
 - **Dari kernel ke proses** → Untuk memberitahu kejadian seperti kematian proses anak atau tersedianya data pada saluran I/O.
 
 Sinyal adalah metode utama untuk mengontrol dan mengelola proses dalam sistem operasi UNIX/Linux.
+
+gambarsignal
+
+bash
+kill [-signal] pid
 
