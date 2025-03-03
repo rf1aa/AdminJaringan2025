@@ -1,9 +1,10 @@
  ufadi# Daftar Isi
-- [Chapter 4: Prosess Control](#chapter-4-process_control)
+- [Chapter 4: Process Control](#chapter-4-process_control)
 - [Chapter 5: Proses dan Thread](#chapter-2-proses-dan-thread)
 - [Chapter 6: Manajemen dan Instalasi Perangkat Lunak](#chapter-3-manajemen-memori)
 
-# Chapter 4: Process Control
+## Chapter 4: Process Control
+
 
 # Komponen Proses
 
@@ -374,7 +375,7 @@ Beberapa perhitungan yang memerlukan waktu lama lebih baik dijalankan sebagai ba
 Anda dapat menggunakan tugas terjadwal untuk melakukan backup dan mirroring secara otomatis.
 
 
-### Chapter 5: Proses dan Thread
+## Chapter 5: Proses dan Thread
 ## Tujuan Dasar dari Sistem Berkas
 
 Tujuan dasar dari sistem berkas adalah untuk merepresentasikan dan mengorganisasi sumber daya penyimpanan sistem.
@@ -789,7 +790,7 @@ other::r--
 Fitur tambahan dari NFSv4 ACL dibandingkan POSIX ACL:  
 - **ACL Default** – digunakan untuk menetapkan izin default pada file dan direktori baru.  
 
-# Chapter 6: Manajemen dan Instalasi Perangkat Lunak  
+## Chapter 6: Manajemen dan Instalasi Perangkat Lunak  
 
 ## Instalasi Sistem Operasi  
 
