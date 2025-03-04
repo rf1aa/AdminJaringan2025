@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 style="text-align: center;font-weight: bold">LAPORAN RESMI<br>WORKSHOP ADMINISTRASI JARINGAN</h1>
+  <h1 style="text-align: center;font-weight: bold">Laporan Resmi<br>Workshop Admnistrasi Jaringan</h1>
   <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
 </div>
 <br />
@@ -7,16 +7,11 @@
   <img src="https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png" alt="Logo PENS">
   <h3 style="text-align: center;">Disusun Oleh : </h3>
   <p style="text-align: center;">
-    <strong>Ale Perdana Putra Darmawan (3123500027) </strong><br>
+    <strong>Muhammad Rafi Dhiyaulhaq (3123500004) </strong><br>
   </p>
 <h3 style="text-align: center;line-height: 1.5">Politeknik Elektronika Negeri Surabaya<br>Departemen Teknik Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
   <hr><hr>
 </div>
-
-## Daftar Isi
-- [Daftar Isi](#daftar-isi)
-- [Instalasi Virtual Box Menggunakan Lab Komputer](#instalasi-virtual-box-menggunakan-lab-komputer)
-- [Kesimpulan](#kesimpulan)
 
 ## Instalasi Virtual Box Menggunakan Lab Komputer
 1. Mengunduh VirtualBox package dari laman `https://www.virtualbox.org/wiki/Linux_Downloads`. Lalu pilih distro linux yang sedang digunakan. Dalam lab computer, distro yang digunakan adalah debian 12.
