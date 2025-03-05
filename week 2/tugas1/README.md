@@ -37,5 +37,3 @@
    
 10. Virtualbox bisa digunakan
     ![ss](images/welcome.jpg)
-## Kesimpulan
-Dapat disimpulkan bahwa instalasi virtualbox dalam linux menggunakan bash shell berbeda dengan melakukan instalasi pada windows dikarenakan adanya beberapa kendala yang dialami oleh pengguna yang memerlukan melakukan beberapa langkah tambahan untuk memperbaiki kendala-kendala yang muncul.
