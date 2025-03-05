@@ -1,4 +1,20 @@
- ufadi# Daftar Isi
+<div align="center">
+  <h1 style="text-align: center;font-weight: bold">Laporan Resmi<br>Workshop Admnistrasi Jaringan</h1>
+  <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
+</div>
+<br />
+<div align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/id/4/44/Logo_PENS.png" alt="Logo PENS">
+  <h3 style="text-align: center;">Disusun Oleh : </h3>
+  <p style="text-align: center;">
+    <strong>Muhammad Rafi Dhiyaulhaq (3123500004) </strong><br>
+  </p>
+<h3 style="text-align: center;line-height: 1.5">Politeknik Elektronika Negeri Surabaya<br>Departemen Teknik Informatika Dan Komputer<br>Program Studi Teknik Informatika<br>2024/2025</h3>
+  <hr><hr>
+</div>
+
+
+ # Daftar Isi
 - [Chapter 4: Process Control](#chapter-4-process-control)
 - [Chapter 5: Proses dan Thread](#chapter-5-proses-dan-thread)
 - [Chapter 6: Manajemen dan Instalasi Perangkat Lunak](#chapter-6-manajemen-dan-instalasi-perangkat-lunak)
@@ -147,7 +163,7 @@ Untuk mencari proses tertentu, Anda dapat menggunakan `grep` untuk menyaring kel
 Kita dapat menentukan PID dari sebuah proses dengan menggunakan `pgrep`.
 ![Screenshot](images/pgrep.png)
 
-atau `pidof`
+atau `pidof` <br>
 ![Screenshot](images/pidof.png)
 
 ### Pemantauan Interaktif dengan `top`  
@@ -406,6 +422,8 @@ Anda dapat menggunakan tugas terjadwal untuk melakukan backup dan mirroring seca
 
 ## Chapter 5: Proses dan Thread
 
+![Screenshot](images/filesystem.png)
+
 ## Tujuan Dasar dari Sistem Berkas
 
 Tujuan dasar dari sistem berkas adalah untuk merepresentasikan dan mengorganisasi sumber daya penyimpanan sistem.
@@ -517,6 +535,7 @@ Baik **`/usr`** maupun **`/var`** harus tersedia agar sistem dapat melakukan boo
 
 ## Jenis File
 
+![Screenshot](images/filetype.png)
 Sebagian besar implementasi sistem file mendefinisikan tujuh jenis file:
 
 - **File reguler** (Regular files)
@@ -550,7 +569,7 @@ Hard link adalah cara untuk memberikan satu file beberapa nama. Perintah `ln` me
 ```sh
 $ ln /etc/passwd /tmp/passwd
 ```
-
+![Screenshot](images/ln-ls.png)
 
 ### File Perangkat Karakter dan Blok  
 File perangkat memungkinkan program berkomunikasi dengan perangkat keras dan periferal sistem. Kernel mencakup (atau memuat) perangkat lunak driver untuk setiap perangkat sistem. Perangkat lunak ini menangani detail manajemen perangkat sehingga kernel tetap relatif abstrak dan independen dari perangkat keras.  
@@ -590,12 +609,14 @@ $ ls -l /usr/bin
 lrwxrwxrwx 1 root root 4 Mar  1  2020 /usr/bin -> /bin
 ```
 
+![Screenshot](images/usr-bin.png)
 ### Atribut File  
 Dalam model sistem file Unix dan Linux, setiap file memiliki satu set sembilan bit izin yang menentukan siapa yang dapat membaca, menulis, dan mengeksekusi file. Bersama dengan tiga bit lain yang terutama memengaruhi operasi program yang dapat dieksekusi, bit-bit ini membentuk mode file.  
 
 Kedua belas bit mode ini disimpan bersama dengan empat bit informasi tipe file. Empat bit tipe file ditetapkan saat file dibuat dan tidak dapat diubah, tetapi pemilik file dan superuser dapat memodifikasi kedua belas bit mode dengan perintah `chmod`.  
 gambar
 
+![Screenshot](images/fileperm.png)
 
 ## Bit Izin  
 
@@ -632,7 +653,7 @@ Contoh skrip Perl:
 #!/usr/bin/perl
 ```
 
-![Screenshot](images/usr-bin.png)
+![Screenshot](images/perl.png)
 Jika skrip yang dapat dieksekusi non-biner tidak menentukan interpreter, maka secara default akan dianggap sebagai skrip shell (`sh`).  
 
 Kernel memahami sintaks `#!` dan akan menjalankannya langsung. Jika interpreter tidak ditentukan dengan benar, kernel akan menolak file tersebut, dan shell akan mencoba menafsirkannya sebagai skrip shell.  
@@ -858,6 +879,8 @@ PXE adalah standar dari **Intel** yang memungkinkan sistem melakukan boot melalu
 - PXE menyediakan **API standar** yang dapat digunakan oleh **BIOS** sistem untuk melakukan boot melalui jaringan.  
 - Dengan PXE, **satu boot loader dapat digunakan untuk melakukan boot melalui jaringan pada semua PC yang mendukung PXE**, tanpa memerlukan driver khusus untuk setiap kartu jaringan.  
 gambar
+
+![Screenshot](images/DHCP.png)
 # Sistem Manajemen Paket Linux  
 
 ## Format Paket di Linux  
