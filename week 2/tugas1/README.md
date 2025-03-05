@@ -27,15 +27,15 @@
 <br>![ss](images/iso.png)
 
 4. Ini adalah halaman Virtual Box ketika baru dibuka
-   ![ss](images/virtualbox-start.png)
+   ![ss](images/virtualbox-start.jpg)
    
 6. Ini adalah bagian pemasangan virtualbox. Dengan rincian 4096 MB RAM, 2 core, dan 20 GB untuk penyimpanan
-   ![ss](images/virtualbox-iso.png)
+   ![ss](images/virtualbox-iso.jpg)
    
 8. Proses instalasi sedang berjalan
-   ![ss](images/installation.png)
+   ![ss](images/installation.jpg)
    
 10. Virtualbox bisa digunakan
-    ![ss](images/welcome.png)
+    ![ss](images/welcome.jpg)
 ## Kesimpulan
 Dapat disimpulkan bahwa instalasi virtualbox dalam linux menggunakan bash shell berbeda dengan melakukan instalasi pada windows dikarenakan adanya beberapa kendala yang dialami oleh pengguna yang memerlukan melakukan beberapa langkah tambahan untuk memperbaiki kendala-kendala yang muncul.
