@@ -76,8 +76,7 @@ Terdapat sekitar **30 jenis sinyal**, yang digunakan dalam berbagai cara:
 - **Dari kernel ke proses** → Untuk memberitahu kejadian seperti kematian proses anak atau tersedianya data pada saluran I/O.
 
 Sinyal adalah metode utama untuk mengontrol dan mengelola proses dalam sistem operasi UNIX/Linux.
-
-gambarsignal
+![Sinyal](images/signal.png)
 
 Sinyal **KILL, INT, TERM, HUP, dan QUIT** terdengar seolah-olah memiliki arti yang hampir sama, tetapi sebenarnya penggunaannya cukup berbeda.
 
@@ -98,6 +97,10 @@ Sesuai namanya, perintah kill paling sering digunakan untuk menghentikan suatu p
 ```sh
 kill [-signal] PID
 ```
+contoh
+![Screenshot](images/kill-signal.png)
+
+![Screenshot](images/kill-signal-result.png)
 
 di mana *signal* adalah nomor atau nama simbolik dari sinyal yang akan dikirim, dan *pid* adalah nomor identifikasi proses dari proses target.  
 
@@ -108,46 +111,54 @@ Perintah *kill* tanpa nomor sinyal tidak menjamin bahwa proses akan mati, karena
 ```sh
 killall firefox
 ```
-Perintah *pkill* serupa dengan *kill* tapi menyediakan lebih banyak opsi
+![Screenshot](images/killall.png)
 
+![Screenshot](images/killall_result.png)
+
+Perintah *pkill* serupa dengan *kill* tapi menyediakan lebih banyak opsi
 
 ```sh
 pkill -u abdoufermat # kill all processes owned by user abdoufermat
 ```
+
+![Screenshot](images/pkill.png)
+
+![Screenshot](images/pkill-result.png)
+
 # PS: Memantau Proses  
 
 Perintah `ps` adalah alat utama administrator sistem untuk memantau proses. Meskipun versi `ps` berbeda dalam argumen dan tampilan, semuanya memberikan informasi yang pada dasarnya sama.  
 
 `ps` dapat menampilkan *PID*, *UID*, prioritas, dan terminal kontrol dari proses. Perintah ini juga memberi tahu seberapa banyak memori yang digunakan oleh suatu proses, berapa banyak waktu *CPU* yang telah dikonsumsi, serta status saat ini dari proses tersebut (berjalan, berhenti, tidur, dan sebagainya).  
 
+![Screenshot](images/ps.png)
+
 Anda dapat memperoleh gambaran sistem yang berguna dengan menjalankan `ps aux`.  
 - Opsi `a` memberi tahu `ps` untuk menampilkan proses dari semua pengguna.  
 - Opsi `u` memberi tahu `ps` untuk memberikan informasi detail tentang setiap proses.  
 - Opsi `x` memberi tahu `ps` untuk menampilkan proses yang tidak terkait dengan terminal.
-
-gambar
-
 Argumen lain yang berguna adalah `lax`, yang memberikan informasi teknis lebih lanjut tentang proses. `lax` sedikit lebih cepat daripada `aux` karena tidak perlu menyelesaikan nama grup dan user.
-
-nyoba
+![Screenshot](images/ps-try.png)
 
 Untuk mencari proses tertentu, Anda dapat menggunakan `grep` untuk menyaring keluaran dari `ps`.
 
-nyoba
+![Screenshot](images/ps-grep.png)
 
 Kita dapat menentukan PID dari sebuah proses dengan menggunakan `pgrep`.
-nyoba
+![Screenshot](images/pgrep.png)
 
 atau `pidof`
-nyoba
+![Screenshot](images/pidof.png)
 
 ### Pemantauan Interaktif dengan `top`  
 
-Perintah `top` menyediakan tampilan real-time yang dinamis dari sistem yang sedang berjalan. Ini dapat menampilkan ringkasan informasi sistem serta daftar proses atau thread yang saat ini dikelola oleh kernel Linux. Jenis informasi ringkasan sistem yang ditampilkan serta jenis, urutan, dan ukuran informasi yang ditampilkan untuk proses dapat dikonfigurasi oleh pengguna, dan konfigurasi tersebut dapat dibuat persisten di seluruh restart.  
+Perintah `top` menyediakan tampilan real-time yang dinamis dari sistem yang sedang berjalan. Ini dapat menampilkan ringkasan informasi sistem serta daftar proses atau thread yang saat ini dikelola oleh kernel Linux. Jenis informasi ringkasan sistem yang ditampilkan serta jenis, urutan, dan ukuran informasi yang ditampilkan untuk proses dapat dikonfigurasi oleh pengguna, dan konfigurasi tersebut dapat dibuat persisten di seluruh restart. Secara default, tampilan diperbarui setiap 1-2 detik, tergantung pada sistem.  
+![Screenshot](images/top.png)
 
-Secara default, tampilan diperbarui setiap 1-2 detik, tergantung pada sistem.  
 
-Ada juga perintah `htop`, yang merupakan penampil proses interaktif untuk sistem Unix. Ini adalah aplikasi mode teks (untuk konsol atau terminal X) dan memerlukan `ncurses`. Ini mirip dengan `top`, tetapi memungkinkan Anda untuk menggulir secara vertikal dan horizontal, sehingga Anda dapat melihat semua proses yang berjalan di sistem beserta perintah lengkapnya. `htop` juga memiliki antarmuka pengguna yang lebih baik dan lebih banyak opsi untuk operasi.  
+Ada juga perintah `htop`, yang merupakan penampil proses interaktif untuk sistem Unix. Ini adalah aplikasi mode teks (untuk konsol atau terminal X) dan memerlukan `ncurses`. Ini mirip dengan `top`, tetapi memungkinkan Anda untuk menggulir secara vertikal dan horizontal, sehingga Anda dapat melihat semua proses yang berjalan di sistem beserta perintah lengkapnya. `htop` juga memiliki antarmuka pengguna yang lebih baik dan lebih banyak opsi untuk operasi.    
+
+![Screenshot](images/htop.png)
 
 ### `nice` dan `renice`: Mengubah Prioritas Proses  
 
@@ -173,7 +184,8 @@ nice -n nice_val [command]
 ```sh
 nice -n 10 sh infinite.sh &
 ```
-nyoba
+
+![Screenshot](images/nice.png)
 
 Perintah `renice` digunakan untuk mengubah nilai niceness dari proses yang sedang berjalan. Sintaksnya adalah:  
 
@@ -185,7 +197,8 @@ renice -n nice_val -p pid
 ```sh
 renice -n 10 -p 1234
 ```
-nyoba
+
+![Screenshot](images/renice.png)
 
 Nilai prioritas adalah prioritas aktual proses yang digunakan oleh kernel Linux untuk menjadwalkan tugas. Di sistem Linux, prioritas berkisar dari 0 hingga 139, dengan:  
 
@@ -197,7 +210,6 @@ Hubungan antara nilai nice dan prioritas adalah sebagai berikut:
 ```sh
 priority_value = 20 + nice_value
 ```
-nyiba
 
 Nilai nice default adalah 0. Semakin rendah nilai nice, semakin tinggi prioritas proses.  
 
@@ -209,7 +221,8 @@ Meskipun namanya `/proc`, direktori ini berisi lebih dari sekadar informasi tent
 
 Setiap proses direpresentasikan oleh direktori di dalam `/proc`, dan setiap proses memiliki direktori yang dinamai sesuai dengan *PID*-nya. Direktori `/proc` berisi berbagai berkas yang menyediakan informasi tentang proses, seperti perintah yang dijalankan, variabel lingkungan, deskriptor berkas, dan sebagainya.
 
-gambar
+
+![Screenshot](images/proc.png)
 
 ### `strace` dan `truss`  
 
@@ -220,8 +233,7 @@ Sebagai contoh, log berikut dihasilkan oleh `strace` yang dijalankan terhadap sa
 ```sh
 $ strace -p 5810
 ```
-
-nyoba
+![Screenshot](images/strace.png)
 
 ### `top` dan `/proc`  
 
@@ -241,6 +253,11 @@ atau
 kill -KILL pid
 ```
 
+![Screenshot](images/kill-KILL.png)
+
+
+![Screenshot](images/kill-KILL-result.png)
+
 Kita dapat menyelidiki penyebab proses tidak terkendali menggunakan `strace` atau `truss`. Proses tidak terkendali yang menghasilkan output dapat memenuhi seluruh sistem berkas.  
 
 Anda dapat menjalankan perintah berikut untuk memeriksa penggunaan sistem berkas:  
@@ -249,17 +266,23 @@ Anda dapat menjalankan perintah berikut untuk memeriksa penggunaan sistem berkas
 df -h
 ```
 
+![Screenshot](images/df.png)
+
 Jika sistem berkas penuh, gunakan `du` untuk menemukan berkas dan direktori terbesar:  
 
 ```sh
 du -sh *
 ```
 
+![Screenshot](images/du.png)
+
 Anda juga dapat menggunakan perintah `lsof` untuk mengetahui berkas apa saja yang sedang dibuka oleh proses tidak terkendali:  
 
 ```sh
 lsof -p pid
 ```
+
+![Screenshot](images/lsof.png)
 
 ### Proses Berkala  
 
@@ -301,7 +324,6 @@ Contohnya:
 # Menjalankan skrip Python setiap tanggal 1 setiap bulan pada pukul 2:30 pagi
 30 2 1 * * /usr/bin/python3 /path/to/script.py
 ```
-gambar
 
 Jadwal berikut: `0,30 * 13 * 5` berarti perintah akan dieksekusi pada menit ke-0 dan ke-30 dari jam ke-13 setiap hari Jumat.
 Jika Anda ingin menjalankan perintah setiap 30 menit, Anda bisa menggunakan:
@@ -314,6 +336,13 @@ Perintah `crontab` digunakan untuk membuat, memodifikasi, dan menghapus crontab:
 - `crontab -e` untuk mengedit crontab.
 - `crontab -l` untuk melihat daftar crontab.
 - `crontab -r` untuk menghapus crontab.
+
+
+![Screenshot](images/crontab-l.png)
+
+![Screenshot](images/cron3menit.png)
+
+![Screenshot](images/cron-r.png)
 
 ## Timer Systemd
 Systemd timer adalah file konfigurasi unit yang memiliki akhiran `.timer`. Systemd timers bisa digunakan sebagai alternatif cron jobs dan lebih fleksibel.
@@ -462,6 +491,7 @@ abdou     1234  0.0  0.0  12345  1234 ?        Ssl  00:00   0:00 code
 abdou     5678  0.0  0.0  12345  1234 ?        Ssl  00:00   0:00 msedge
 abdou     91011  0.0  0.0  12345  1234 ?        Ssl  00:00   0:00 chrome
 ```
+![Screenshot](images/ps-up.png)
 
 ## Organisasi Pohon Berkas
 
@@ -483,7 +513,7 @@ Direktori **`/usr`** dan **`/var`** juga sangat penting:
 
 Baik **`/usr`** maupun **`/var`** harus tersedia agar sistem dapat melakukan booting ke mode multiuser.
 
-gambar
+![Screenshot](images/pathname.png)
 
 ## Jenis File
 
@@ -499,11 +529,11 @@ Sebagian besar implementasi sistem file mendefinisikan tujuh jenis file:
 
 Anda dapat menentukan jenis file dengan menggunakan perintah `file` (ketik `man file` untuk informasi lebih lanjut).
 
-$file /bin/bash(nyoba), liat lgi ch-nya)
+![Screenshot](images/filebin.png)
 
 Anda juga dapat menggunakan perintah `ls -ld`. Opsi `-d` memaksa `ls` untuk menampilkan informasi tentang direktori itu sendiri, bukan isinya.
 
-gambar
+![Screenshot](images/ls-ld.png)
 
 ## Jenis File  
 
@@ -520,6 +550,7 @@ Hard link adalah cara untuk memberikan satu file beberapa nama. Perintah `ln` me
 ```sh
 $ ln /etc/passwd /tmp/passwd
 ```
+
 
 ### File Perangkat Karakter dan Blok  
 File perangkat memungkinkan program berkomunikasi dengan perangkat keras dan periferal sistem. Kernel mencakup (atau memuat) perangkat lunak driver untuk setiap perangkat sistem. Perangkat lunak ini menangani detail manajemen perangkat sehingga kernel tetap relatif abstrak dan independen dari perangkat keras.  
@@ -599,7 +630,9 @@ Konvensinya adalah bahwa skrip dimulai dengan **shebang (`#!`)**, yang memberi t
 Contoh skrip Perl:  
 ```sh
 #!/usr/bin/perl
-```  
+```
+
+![Screenshot](images/usr-bin.png)
 Jika skrip yang dapat dieksekusi non-biner tidak menentukan interpreter, maka secara default akan dianggap sebagai skrip shell (`sh`).  
 
 Kernel memahami sintaks `#!` dan akan menjalankannya langsung. Jika interpreter tidak ditentukan dengan benar, kernel akan menolak file tersebut, dan shell akan mencoba menafsirkannya sebagai skrip shell.  
@@ -650,10 +683,6 @@ Angka **"4, 0"** di akhir menunjukkan **nomor perangkat utama dan minor**.
 Perintah `chmod` digunakan untuk mengubah mode file. Izin dapat diatur menggunakan:  
 - **Notasi oktal** (misalnya, `chmod 755 file`).  
 - **Notasi simbolik** (misalnya, `chmod u+rwx,g+rx,o+rx file`).
-
-- gambar
-
-
 ## Sintaks Mnemonik `chmod`  
 
 | Spesifikasi | Makna |
@@ -671,8 +700,7 @@ Anda juga dapat menetapkan mode dengan menyalin mode dari file lain menggunakan 
 ```sh
 chmod --reference=sourcefile targetfile
 ```  
-
----
+![Screenshot](images/chmod.png)
 
 ## `chown`: Mengubah Kepemilikan  
 
@@ -683,8 +711,8 @@ Perintah `chown` digunakan untuk mengubah pemilik dan grup file.
 ```sh
 chown -R abdou:users /home/abdou
 ```  
+![Screenshot](images/chown.png)
 
----
 
 ## `chgrp`: Mengubah Grup  
 
@@ -698,6 +726,8 @@ chgrp -R users /home/abdou
 
 ---
 
+![Screenshot](images/chgrp.png)
+
 ## `umask`: Menetapkan Izin Default  
 
 Perintah `umask` menetapkan izin default untuk file dan direktori baru.  
@@ -708,6 +738,8 @@ Nilai `umask` adalah **mask bit** yang dikurangkan dari izin default untuk menen
 umask 022
 ```  
 
+![Screenshot](images/umask.png)
+
 | Oktal | Biner | Izin | Oktal | Biner | Izin |
 |-------|-------|------|-------|-------|------|
 | 0     | 000   | rwx  | 4     | 100   | -wx  |
@@ -715,9 +747,6 @@ umask 022
 | 2     | 010   | r-x  | 6     | 110   | --x  |
 | 3     | 011   | r--  | 7     | 111   | ---  |
 
-Sebagai contoh, `umask 027` memberikan izin **rwx** kepada pemilik, **rx** kepada grup, dan **tidak ada izin** kepada pengguna lain.  
-
----
 
 ## Daftar Kontrol Akses (ACL)  
 
@@ -741,6 +770,7 @@ setfacl -m u:abdou:rw /etc/passwd
 ```  
 
 ---
+![Screenshot](images/getsetfacl.png)
 
 ## Implementasi ACL  
 
@@ -783,6 +813,7 @@ other::r--
 ```  
 
 ---
+nyoba
 
 ## NFSv4 ACL  
 
