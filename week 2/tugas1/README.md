@@ -18,7 +18,7 @@
 > **Note:** Karena banyak dokumentasi saya yang tidak ada, beberapa proses akan saya ulangi sendiri dengan PC saya di rumah.
 
 1. Mengunduh VirtualBox package. Pilih distro linux yang sedang digunakan, dalam hal ini, yaitu debian 12.
-<br>![ss](images/downloads.png)
+<br>![ss](images/download.png)
 
 2. buka terminal dan masuk ke dalam directory `Unduhan`. Jalankan command `sudo dpkg -i [nama-paket-VirtualBox]` untuk memulai instalasi VirtualBox dengan keterangan `sudo` untuk mendapatkan hak akses administrator, `dpgk` untuk instalasi paket berjenis `.deb`, dan `-i` untuk opsi instalasi.
 <br>![ss](images/dpkg.png)
