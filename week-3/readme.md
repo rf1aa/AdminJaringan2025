@@ -109,7 +109,7 @@ Buka file konfigurasi Samba untuk diedit:
 ```sh
 sudo vi /etc/samba/smb.conf
 ```
-![Konfig Samba](assets/samba-conf.jpg)
+![Konfig Samba](assets/samba-conf.png)
 
 ## 4. Ubah Pengaturan Jaringan
 Tambahkan atau ubah baris berikut dalam file `smb.conf`:
@@ -139,17 +139,8 @@ Tambahkan konfigurasi share di bagian paling bawah file `smb.conf`:
    force directory mode = 777
 
 ```
-![Konfigurasi Share](assets/share_conf-3.jpg)
+![Konfigurasi Share](assets/samba_conf-3.jpg)
 
-Tambahkan konfigurasi untuk folder **limited**:
-```sh
-[limited]
-   path = /home/limited
-   browseable = yes
-   read only = no
-   valid users = sambauser
-   force user = sambauser
-```
 
 ## 7. Restart Layanan Samba
 Setelah melakukan perubahan, restart layanan Samba:
@@ -184,7 +175,16 @@ sudo chown 770 /home/limited
 ```
 ![Buat direktori limited](assets/samba_limited_make.jpg)
 `
-        Tambahkan konfigurasi
+Tambahkan konfigurasi untuk folder **limited**:
+```sh
+[limited]
+   path = /home/limited
+   browseable = yes
+   read only = no
+   valid users = sambauser
+   force user = sambauser
+```
+
 
 ![Konfig limited](assets/limited-conf.jpg)
 
@@ -203,12 +203,12 @@ ip a
 sudo apt install smbclient -y
 ```
 
-![SMBClient](smbclient.jpg)
+![SMBClient](assets/smbclient.jpg)
 
   Cek direktori
 
   
-![Cek Smbclient](smbclient_check.jpg)
+![Cek Smbclient](assets/smbclient_check.jpg)
 
 Jika user masih terdeteksi sebagai `nobody`, perbaiki dengan menambahkan konfigurasi berikut di `smb.conf`:
 ```sh
@@ -237,7 +237,7 @@ perintah `ls` digunakan untuk mengecek isi file dalam folder Share. Untuk memasu
    smbclient -L //<IP-TEMAN> -U sambauser
    ```
    
-![Share ](assets/share-file-cli.jpg)
+![Share](assets/share-file-cli.jpg)
 
   Coba akses dari file manager
 ![Share via file](assets/share-file.jpg)
@@ -247,7 +247,7 @@ perintah `ls` digunakan untuk mengecek isi file dalam folder Share. Untuk memasu
    smbclient //localhost/limited -U sambauser
    ```
   
-![Akses limited](assets/limited-access.jpg)
+![Akses limited](assets/limited-access-2.jpg)
    
 5. Pastikan bisa membuka file dari sistem luar VirtualBox.
 Untuk mengakses folderlimited, nanti hanya ada user yang diijinkan yang bisa mengakses. User nanti juga harus memasukkan password.   
