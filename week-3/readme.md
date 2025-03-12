@@ -240,7 +240,7 @@ perintah `ls` digunakan untuk mengecek isi file dalam folder Share. Untuk memasu
 ![Share](assets/share-file-cli.jpg)
 
   Coba akses dari file manager
-![Share via file](assets/share-file.jpg)
+![Share via file](assets/Share-file.jpg)
 
 4. Coba akses folder **limited**:
    ```sh
