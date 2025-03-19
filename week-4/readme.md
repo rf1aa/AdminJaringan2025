@@ -20,9 +20,9 @@ DNS (Domain Name System) adalah punya prinsip yang sama dengan buku kuning telep
 
 ---
 
-## **Bagaimana DNS Bekerja?**
+## Bagaimana DNS Bekerja?
 ![dnswork](https://kripesh.b-cdn.net/wp-content/uploads/2020/10/How-dns-works-1536x1536.webp)
-Proses **resolusi DNS** mengubah **hostname** (contoh: `www.example.com`) menjadi **alamat IP** (`192.168.1.1`). Ini seperti mencocokkan alamat rumah dengan nama pemiliknya. Saat pengguna mengakses sebuah situs web, terjadi proses pencarian alamat IP dari nama domain yang dimasukkan.
+Proses resolusi DNS** mengubah hostname (contoh: `www.example.com`) menjadi alamat IP (`192.168.1.1`). Ini seperti mencocokkan alamat rumah dengan nama pemiliknya. Saat pengguna mengakses sebuah situs web, terjadi proses pencarian alamat IP dari nama domain yang dimasukkan.
 Pencarian DNS terjadi "di balik layar" dan melibatkan beberapa **komponen utama** dalam sistem DNS.
 Gampangnya, nanti klien akan memasukkan domain yang ingin dikunjungi. DNS akan meemberikan IP dari domain tersebut sehingga klien bisa memulai komunikasi dengan server yang dituju.
 ---
@@ -405,84 +405,57 @@ academy.apnic.net. 86400 IN A 203.119.101.88
 ## Instalasi DNS Server
 Langkah 1:<br>
 Instalasi BIND menggunakan perintah `sudo apt -y install bind9 bind9utils`
-<br>Percobaan:
+
 <br><div style=width:500;>![ss](assets/1.png)</div>
 
 Langkah 2:<br>
-Konfigurasi BIND untuk network internal dalam named.conf menggunakan perintah `sudo nano /etc/bind/named.conf` untuk menambahkan `include "/etc/bind/named.conf.internal-zones";`
-<br>Percobaan:
+Konfigurasi BIND untuk network internal dalam named.conf menggunakan perintah `sudo nano /etc/bind/named.conf`
+
 <br>![ss](assets/bind-named-conf.png)</div>
 
 Langkah 3:<br>
-Konfigurasi BIND untuk network internal dalam named.conf.options menggunakan perintah `sudo nano /etc/bind/named.conf.options` untuk menambahkan: 
-```bash
-        acl internal-network {
-                10.0.0.0/24;
-        };
-...
-...
-        # add local network set on [acl] section above
-        # network range you allow to recieve queries from hosts
-        allow-query { localhost; internal-network; };
-        # network range you allow to transfer zone files to clients
-        # add secondary DNS servers if it exist
-        allow-transfer { localhost; };
-```
-Percobaan:
+Konfigurasi BIND untuk network internal dalam named.conf.options menggunakan perintah `sudo nano /etc/bind/named.conf.options`
+
 <br><div style=width:500;>![ss](assets/bind-named.png)</div>
 <br><div style=width:500;>![ss](assets/acl.jpg)</div>
 
 Langkah 4:<br>
-Konfigurasi BIND untuk network internal dalam named.conf.internal-zones menggunakan perintah `sudo nano /etc/bind/named.conf.options` untuk menambahkan:<br>
-```bash
-zone "kelompok2.home" IN {
-        type master;
-        file "/etc/bind/kelompok2.home.lan";
-        allow-update { none; };
-};
-zone "108.252.10.in-addr.arpa" IN {
-        type master;
-        file "/etc/bind/108.252.10.db";
-        allow-update { none; };
-};
-```
-Percobaan:
+Konfigurasi BIND untuk network internal dalam named.conf.internal-zones menggunakan perintah `sudo nano /etc/bind/named.conf.options` 
+
 <br><div style=width:500;>![ss](assets/bind-named.png)</div>
 <br><div style=width:500;>![ss](assets/zone.jpg)</div>
 
 Langkah 5:<br>
-Konfigurasi BIND untuk network internal dalam /default/named menggunakan perintah `sudo nano /etc/default/named` untuk menambahkan:<br>
-```bash
-# add
-OPTIONS="-u bind -4"
-```
-Percobaan:
+Konfigurasi BIND untuk network internal dalam /default/named menggunakan perintah `sudo nano /etc/default/named` 
+
 <br><div style=width:500;>![ss](assets/opt-jpg)</div>
 
 Langkah 6:<br>
 Membuat file zona yang digunakan server untuk menyelesaikan alamat IP dari nama domain, menggunakan perintah `sudo nano /etc/bind/kelompok2.home.lan`
-<br>Percobaan:
+
+
 <br><div style=width:500;>![ss](assets/lan.jpg)</div>
 <br><div style=width:500;>![ss](assets/lan_home.jpg)</div>
 
 Langkah 7:<br>
-Buat file zona yang memungkinkan server mengubah nama domain menjadi alamat IP menggunakan perintah `sudo nano /etc/bind/108.252.10.db`
-<br>Percobaan:
+Buat file zona agar server dapat mengubah nama domain menjadi alamat IP menggunakan perintah `sudo nano /etc/bind/108.252.10.db`
+
 <br><div style=width:500;>![ss](assets/ip-db.jpg)</div>
 <br><div style=width:500;>![ss](assets/ip-nano.jpg)</div>
 
 Langkah 8:<br>
-Restart BIND untuk menyimpan perubahan menggunakan `systemctl restart named`
-<br>Percobaan:
+Restart BIND 
+
 <br><div style=width:500;>![ss](assets/restart.jpg)</div>
 
 Langkah 9:<br>
-Merubah pengaturan DNS untuk merujuk ke DNS sendiri pada resolv.conf
-<br>Percobaan:
+Mengubah pengaturan DNS untuk merujuk ke DNS sendiri pada resolv.conf
+
 <br><div style=width:500;>![ss](assets/resolv.jpg)</div>
 <br><<div style=width:500;>![resolv](assets/resolv2.jpg)</div>
 
 Langkah 10:<br>
-Verifikasi Resolusi Nama dan Alamat menggunakan `dig dlp.kelompok2.home.` dan `dig -x 10.252.108.228`
-<br>Percobaan:
+Verifikasi Resolusi Nama dan Alamat menggunakan `dig dlp.kelompok2.home.` dan 
+
+
 <br><div style=width:500;>![ss](assets/dig.jpeg)</div>
