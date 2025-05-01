@@ -21,12 +21,12 @@
 Langkah 1:<br>
 Unduh WinBox di `https://mikrotik.com/download`.
 <br>Gambar:
-<br><div style=width:500;>![ss](assets/wb1.png)</div>
+<br>![ss](assets/wb1.png)
 
 Langkah 2:<br>
 Buka file WinBox yang telah diunduh, Isi connect to sesuai IP router mikrotik yang sedang dipakai. Untuk Login dan Password gunakan admin.
 <br>Gambar:
-<br><div style=width:500;>![ss](assets/wb2.jpeg)</div>
+<br>![ss](assets/wb2.jpeg)
 
 Langkah 3:<br>
 Jika sudah berhasil terhubung, buka terminal dengan menekan menu new terminal. Lalu tambahkan routing dengan perintah `ip route add dst-address=<tujuan-network> gateway=<IP-router>` 
