@@ -1,4 +1,4 @@
-<div align="center">
+  <div align="center">
   <h1 style="text-align: center;font-weight: bold">Laporan Resmi<br>Workshop Admnistrasi Jaringan</h1>
   <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
 </div>
@@ -13,14 +13,6 @@
   <hr><hr>
 </div>
 
-Berikut adalah versi `README.md` yang diperbarui sesuai permintaan kamu:  
-- Gunakan penomoran sederhana (1), 2), 3)...  
-- Tambahkan placeholder gambar setelah setiap langkah percobaan.  
-- Format markdown sudah siap untuk langsung dicopas.
-
----
-
-```md
 # Laporan Instalasi dan Konfigurasi DNS Server (BIND9) dan Web Server (Apache2)
 
 Percobaan ini bertujuan untuk menginstal dan mengonfigurasi dua layanan utama pada sistem berbasis Linux:
@@ -46,8 +38,6 @@ apt update
 apt -y install bind9 bind9utils
 ```
 
-!(screenshot)[assets/bind-install.jpg]
-
 ---
 
 ### b) Tambahkan include zona internal
@@ -61,7 +51,7 @@ Tambahkan:
 include "/etc/bind/named.conf.internal-zones";
 ```
 
-!(screenshot)[assets/include-internal.jpg]
+!(screenshot)[assets/bind-1.jpg]
 
 ---
 
@@ -74,11 +64,20 @@ nano /etc/bind/named.conf.options
 Tambahkan:
 ```conf
 acl internal-network {
-    192.168.200.0/24;
+    192.168.2.0/24;
+};
+
+options {
+        directory "/var/cache/bind";
+        allow-query { localhost; internal-network; };
+        allow-transfer { localhost; };
+        recursion yes;
+        dnssec-validation auto;
+        listen-on-v6 { any; };
 };
 ```
 
-!(screenshot)[assets/acl-options.jpg]
+!(screenshot)[assets/bind-2.jpg]
 
 ---
 
@@ -90,20 +89,20 @@ nano /etc/bind/named.conf.internal-zones
 
 Isi dengan:
 ```conf
-zone "praktikum.local" IN {
+zone "kelompok2.home" IN {
     type master;
-    file "/etc/bind/praktikum.local.db";
+    file "/etc/bind/kelompok2.home.lan";
     allow-update { none; };
 };
 
-zone "200.168.192.in-addr.arpa" IN {
+zone "2.168.192.in-addr.arpa" IN {
     type master;
-    file "/etc/bind/200.168.192.db";
+    file "/etc/bind/2.168.192.db";
     allow-update { none; };
 };
 ```
 
-!(screenshot)[assets/internal-zones.jpg]
+!(screenshot)[assets/bind-3.jpg]
 
 ---
 
@@ -118,36 +117,36 @@ Tambahkan:
 OPTIONS="-u bind -4"
 ```
 
-!(screenshot)[assets/bind-ipv4.jpg]
+!(screenshot)[assets/bind-4.jpg]
 
 ---
 
 ### f) Konfigurasi zona forward (A Record)
 
 ```bash
-nano /etc/bind/praktikum.local.db
+nano /etc/bind/kelompok2.home.lan
 ```
 
 Isi:
 ```dns
 $TTL 86400
-@   IN  SOA     ns1.praktikum.local. root.praktikum.local. (
-        2025041501  ; Serial
+@   IN  SOA     kelompok2.home. root.kelompok2.home. (
+        2025042401  ; Serial
         3600        ; Refresh
         1800        ; Retry
         604800      ; Expire
         86400       ; Minimum TTL
 )
 
-    IN  NS      ns1.praktikum.local.
-    IN  A       192.168.200.1
-    IN  MX 10   ns1.praktikum.local.
+    IN  NS      ns1.kelompok2.home.
+    IN  A       192.168.2.1
+    IN  MX 10   ns1.kelompok2.home.
 
-ns1 IN  A       192.168.200.1
-www IN  A       192.168.200.2
+ns1 IN  A       192.168.2.10
+www IN  CNAME ns
 ```
 
-!(screenshot)[assets/forward-zone.jpg]
+!(screenshot)[assets/bind-5.jpg]
 
 ---
 
