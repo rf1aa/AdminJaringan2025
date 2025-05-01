@@ -1,4 +1,4 @@
-  <div align="center">
+   <div align="center">
   <h1 style="text-align: center;font-weight: bold">Laporan Resmi<br>Workshop Admnistrasi Jaringan</h1>
   <h4 style="text-align: center;">Dosen Pengampu : Dr. Ferry Astika Saputra, S.T., M.Sc.</h4>
 </div>
@@ -51,7 +51,7 @@ Tambahkan:
 include "/etc/bind/named.conf.internal-zones";
 ```
 
-!(screenshot)[assets/bind-1.jpg]
+![screenshot](assets/bind-1.jpg)
 
 ---
 
@@ -77,7 +77,7 @@ options {
 };
 ```
 
-!(screenshot)[assets/bind-2.jpg]
+![screenshot](assets/bind-2.jpg)
 
 ---
 
@@ -102,7 +102,7 @@ zone "2.168.192.in-addr.arpa" IN {
 };
 ```
 
-!(screenshot)[assets/bind-3.jpg]
+![screenshot](assets/bind-3.jpg)
 
 ---
 
@@ -117,7 +117,7 @@ Tambahkan:
 OPTIONS="-u bind -4"
 ```
 
-!(screenshot)[assets/bind-4.jpg]
+![screenshot](assets/bind-4.jpg)
 
 ---
 
@@ -128,7 +128,7 @@ nano /etc/bind/kelompok2.home.lan
 ```
 
 Isi:
-```dns
+```
 $TTL 86400
 @   IN  SOA     kelompok2.home. root.kelompok2.home. (
         2025042401  ; Serial
@@ -146,33 +146,34 @@ ns1 IN  A       192.168.2.10
 www IN  CNAME ns
 ```
 
-!(screenshot)[assets/bind-5.jpg]
+![screenshot](assets/bind-5.jpg)
 
 ---
 
 ### g) Konfigurasi zona reverse (PTR Record)
 
 ```bash
-nano /etc/bind/200.168.192.db
+nano /etc/bind/2.168.192.db
 ```
 
 Isi:
 ```dns
 $TTL 86400
-@   IN  SOA     ns1.praktikum.local. root.praktikum.local. (
-        2025041501
-        3600
-        1800
-        604800
-        86400
+@   IN  SOA     kelompok2.home. root.kelompok2.home. (
+        2025042401  ; Serial
+        3600        ; Refresh
+        1800        ; Retry
+        604800      ; Expire
+        86400       ; Minimum TTL
 )
-    IN  NS      ns1.praktikum.local.
 
-1   IN  PTR     ns1.praktikum.local.
-2   IN  PTR     www.praktikum.local.
+    IN  NS      ns.kelompok2.home.
+
+10   IN  PTR     ns.kelompok2.home.
+10   IN  PTR     www.kelompok2.home.
 ```
 
-!(screenshot)[assets/reverse-zone.jpg]
+![screenshot](assets/bind-6.jpg)
 
 ---
 
@@ -183,30 +184,28 @@ systemctl restart named
 systemctl enable named
 ```
 
-!(screenshot)[assets/named-start.jpg]
-
 ---
 
-### i) Pengujian DNS
+### i) Menambah nameserver
 
-1. Atur `dns-nameservers` pada VM client:
+1. Atur `nameserver` pada VM client:
 ```bash
-nano /etc/network/interfaces
+nano /etc/resolv.conf
 ```
 
 Tambahkan:
 ```conf
-dns-nameservers 192.168.200.1
+dns-nameserver 192.168.2.1
 ```
 
-!(screenshot)[assets/interfaces-dns.jpg]
+!(screenshot)[assets/bind-7.jpg]
 
 2. Uji dengan `dig`:
 ```bash
-dig ns1.praktikum.local
+dig ns.kelompok2.home.
 ```
 
-!(screenshot)[assets/dig-test.jpg]
+![screenshot](assets/bind-8.jpg)
 
 ---
 
@@ -217,8 +216,6 @@ dig ns1.praktikum.local
 ```bash
 apt -y install apache2
 ```
-
-!(screenshot)[assets/apache-install.jpg]
 
 ---
 
@@ -233,7 +230,7 @@ Ubah baris:
 ServerTokens Prod
 ```
 
-!(screenshot)[assets/apache-security.jpg]
+![screenshot](assets/apache-2.jpg)
 
 ---
 
@@ -243,12 +240,12 @@ ServerTokens Prod
 nano /etc/apache2/mods-enabled/dir.conf
 ```
 
-Ubah baris:
+Tambahkan:
 ```conf
 DirectoryIndex index.html index.htm
 ```
 
-!(screenshot)[assets/apache-dirconf.jpg]
+![screenshot](assets/apache-3.jpg)
 
 ---
 
@@ -260,10 +257,10 @@ nano /etc/apache2/apache2.conf
 
 Tambahkan:
 ```conf
-ServerName www.srv.world
+ServerName www.kelompok2.home.
 ```
 
-!(screenshot)[assets/apache-conf.jpg]
+![screenshot](assets/apache-4.jpg)
 
 ---
 
@@ -277,8 +274,9 @@ Ubah baris:
 ```conf
 ServerAdmin webmaster@srv.world
 ```
+Ubah sesuai dengan keinginan
 
-!(screenshot)[assets/apache-vhost.jpg]
+![screenshot](assets/apache-5.jpg)
 
 ---
 
@@ -288,27 +286,19 @@ ServerAdmin webmaster@srv.world
 systemctl reload apache2
 ```
 
-!(screenshot)[assets/apache-reload.jpg]
-
 ---
 
 ### g) Pengujian Web Server
 
 1. Akses dari browser:
 ```
-http://192.168.200.2
+http://192.168.2.254
 ```
 
-2. Jika DNS aktif:
-```
-http://www.praktikum.local
-```
 
-!(screenshot)[assets/apache-browser-test.jpg]
+![screenshot](assets/apache.jpg)
 
 ---
 
 **Selesai.**
 ```
-
-Kalau kamu mau langsung sekalian aku buatin file `.md` atau isi gambarnya nanti kamu isi sendiri, tinggal bilang aja.
