@@ -18,27 +18,32 @@
 - [Konfigurasi Mikrotik](#konfigurasi-mikrotik)
 
 ## Konfigurasi Mikrotik
-Langkah 1:<br>
-Unduh WinBox di `https://mikrotik.com/download`.
-<br>Gambar:
-<br>![ss](assets/wb1.png)
 
-Langkah 2:<br>
-Buka file WinBox yang telah diunduh, Isi connect to sesuai IP router mikrotik yang sedang dipakai. Untuk Login dan Password gunakan admin.
-<br>Gambar:
-<br>![ss](assets/wb2.jpeg)
+Langkah 1:  
+Unduh WinBox di `https://mikrotik.com/download`.  
+Gambar:  
+<img src="assets/wb1.png" width="500" />
 
-Langkah 3:<br>
-Jika sudah berhasil terhubung, buka terminal dengan menekan menu new terminal. Lalu tambahkan routing dengan perintah `ip route add dst-address=<tujuan-network> gateway=<IP-router>` 
-<br>Gambar:
-<br><div style=width:500;>![ss](assets/wb3.jpeg)</div>
+Langkah 2:  
+Buka file WinBox yang telah diunduh. Isi **Connect To** sesuai dengan IP router Mikrotik yang sedang digunakan. Untuk **Login** dan **Password** gunakan `admin`.  
+Gambar:  
+<img src="assets/wb2.jpeg" width="500" />
 
-Langkah 4:<br>
-Setelah selesai menambahkan routing, lakukan testing ping menggunakan perintah `ping <IP-dalam-network>`
-<br>Gambar:
-<br><div style=width:500;>![ss](assets/wb4.jpeg)</div>
+Langkah 3:  
+Jika sudah berhasil terhubung, buka terminal dengan memilih menu **New Terminal**. Kemudian tambahkan routing dengan perintah:  
+```bash
+ip route add dst-address=<tujuan-network> gateway=<IP-router>
+```  
+Gambar:  
+<img src="assets/wb3.jpeg" width="500" />
 
-Langkah 5:<br>
-Tambahkan semua routing untuk network kelompok lain.
-<br>Gambar:
-<br><div style=width:500;>![ss](assets/wb5.jpeg)</div>
+Langkah 4:  
+Setelah selesai menambahkan routing, lakukan pengujian koneksi menggunakan perintah:  
+```bash
+ping <IP-dalam-network>
+```  
+Gambar:  
+<img src="assets/wb4.jpeg" width="500" />
+```
+
+Silakan salin bagian tersebut dan uji kembali di platform Anda. Bila masih belum muncul, kemungkinan besar adalah masalah pada nama file atau penempatan folder. Ingin saya bantu cek file gambar atau struktur foldernya juga?
