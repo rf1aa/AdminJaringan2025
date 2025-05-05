@@ -29,6 +29,7 @@ Percobaan ini bertujuan untuk menginstal dan mengonfigurasi dua layanan utama pa
 
 ---
 
+![screenshot](assets/topologi.png)
 ## 1) Instalasi dan Konfigurasi BIND9 (DNS Server)
 
 ### a) Instalasi BIND9
