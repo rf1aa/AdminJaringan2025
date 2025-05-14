@@ -26,7 +26,6 @@ Percobaan ini bertujuan untuk menginstal dan mengonfigurasi **Apache2** sebagai 
 
 ---
 
-![screenshot](assets/topologi.png)
 ## 1) Apa itu Apache?
 
 ### **Apa itu Apache2 dan Bagaimana Cara Kerjanya**
