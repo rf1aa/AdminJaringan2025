@@ -13,24 +13,49 @@
   <hr><hr>
 </div>
 
-# Laporan Instalasi dan Konfigurasi DNS Server (BIND9) dan Web Server (Apache2)
+# Laporan Instalasi dan Konfigurasi DNS Server (BIND9)
 
-Percobaan ini bertujuan untuk menginstal dan mengonfigurasi dua layanan utama pada sistem berbasis Linux:
-
-- **BIND9** sebagai DNS server yang mengelola pemetaan nama domain ke alamat IP.
-- **Apache2** sebagai web server untuk menyajikan halaman web.
-
+Percobaan ini bertujuan untuk menginstal dan mengonfigurasi **BIND9** sebagai DNS server yang mengelola pemetaan nama domain ke alamat IP.
 ---
 
 ## Daftar Isi
 
-1) [Instalasi dan Konfigurasi BIND9 (DNS Server)](#1-instalasi-dan-konfigurasi-bind9-dns-server)  
-2) [Instalasi dan Konfigurasi Apache2 (Web Server)](#2-instalasi-dan-konfigurasi-apache2-web-server)
+1) [Definisi BIND9 (DNS Server)](#1-definisi-bind9)  
+2) [Instalasi dan Konfigurasi BIND9 (Web Server)](#2-instalasi-dan-konfigurasi-bind9-dns-server)
 
 ---
 
 ![screenshot](assets/topologi.png)
-## 1) Instalasi dan Konfigurasi BIND9 (DNS Server)
+## 1) Definisi BIND9 (DNS Server)
+
+
+### **Apa itu BIND9 dan Fungsinya**
+
+**BIND9 (Berkeley Internet Name Domain versi 9)** adalah **perangkat lunak server DNS (Domain Name System)** yang paling umum digunakan di sistem berbasis UNIX/Linux, termasuk Debian. Fungsinya adalah untuk **menerjemahkan nama domain** seperti `example.com` menjadi alamat IP seperti `192.0.2.1`, sehingga komputer dapat menemukan dan berkomunikasi satu sama lain di jaringan.
+
+#### **Fungsi Utama BIND9**
+
+* **DNS Resolver**: Menjawab permintaan DNS dari klien (misalnya browser).
+* **Authoritative DNS Server**: Menyediakan informasi DNS untuk domain tertentu.
+* **Caching**: Menyimpan hasil pencarian DNS sementara agar lebih cepat diakses berikutnya.
+* **Zone Management**: Mengelola zona DNS, termasuk domain utama dan subdomain.
+
+#### **Komponen Penting BIND9**
+
+* **named**: Layanan utama BIND (daemon) yang berjalan di latar belakang.
+* **named.conf**: File konfigurasi utama BIND, di mana zona dan opsi DNS diatur.
+* **Zona file**: File yang berisi informasi pemetaan nama domain ke IP (dan sebaliknya).
+
+#### **Manfaat Penggunaan BIND9**
+
+* Menyediakan layanan DNS lokal dalam jaringan internal.
+* Mempercepat akses internet dengan caching DNS.
+* Dapat digunakan untuk membuat DNS server publik.
+
+---
+
+## 2) Instalasi dan Konfigurasi BIND9 (Web Server)
+
 
 ### a) Instalasi BIND9
 
@@ -207,97 +232,6 @@ dig ns.kelompok2.home.
 ```
 
 ![screenshot](assets/bind-8.jpg)
-
----
-
-## 2) Instalasi dan Konfigurasi Apache2 (Web Server)
-
-### a) Instalasi Apache2
-
-```bash
-apt -y install apache2
-```
-
----
-
-### b) Ubah informasi header (security.conf)
-
-```bash
-nano /etc/apache2/conf-enabled/security.conf
-```
-
-Ubah baris:
-```conf
-ServerTokens Prod
-```
-
-![screenshot](assets/apache-2.jpg)
-
----
-
-### c) Atur file index default
-
-```bash
-nano /etc/apache2/mods-enabled/dir.conf
-```
-
-Tambahkan:
-```conf
-DirectoryIndex index.html index.htm
-```
-
-![screenshot](assets/apache-3.jpg)
-
----
-
-### d) Tentukan nama server
-
-```bash
-nano /etc/apache2/apache2.conf
-```
-
-Tambahkan:
-```conf
-ServerName www.kelompok2.home.
-```
-
-![screenshot](assets/apache-4.jpg)
-
----
-
-### e) Ubah email admin virtual host
-
-```bash
-nano /etc/apache2/sites-enabled/000-default.conf
-```
-
-Ubah baris:
-```conf
-ServerAdmin webmaster@srv.world
-```
-Ubah sesuai dengan keinginan
-
-![screenshot](assets/apache-5.jpg)
-
----
-
-### f) Reload Apache
-
-```bash
-systemctl reload apache2
-```
-
----
-
-### g) Pengujian Web Server
-
-1. Akses dari browser:
-```
-http://192.168.2.254
-```
-
-
-![screenshot](assets/apache.jpg)
 
 ---
 
